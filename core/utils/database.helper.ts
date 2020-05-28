@@ -1,8 +1,7 @@
 import { ConnectionPool, Request } from 'mssql';
-
-import { expect } from '../support/assert/expect';
 import { logger } from './logger.helper';
 import { decrypted } from './password.handler';
+import { t } from 'testcafe';
 
 let pool: ConnectionPool;
 let request: Request;
@@ -25,9 +24,7 @@ class DatabaseHelper {
       tedious: false,
     };
     pool = await new ConnectionPool(msSQLConfig).connect();
-    await expect(pool, 'Pool should not be equal to Null').not.to.be.equal(
-      null
-    );
+    await t.expect(pool).notEql(null, 'Pool should not be equal to Null');
     try {
       request = pool.request();
       logger.info('Database connection is successful...');

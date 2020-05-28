@@ -1,23 +1,9 @@
 {
-  "cucumberautocomplete.steps": ["e2e/**/*.ts", "core/**/*.ts"],
-  "cucumberautocomplete.syncfeatures": "e2e/features/*.feature",
-  "cucumberautocomplete.smartSnippets": true,
-  "cucumberautocomplete.stepsInvariants": true,
-  "cucumberautocomplete.skipDocStringsFormat": true,
-  "cucumberautocomplete.onTypeFormat": true,
-
-  "cucumberautocomplete.customParameters": [
-    {
-      "parameter": "\"(.*)\"",
-      "value": "\".*\""
-    }
-  ],
   "editor.quickSuggestions": {
     "comments": false,
     "strings": true,
     "other": true
   },
-  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then|And)\\(",
   "files.autoSave": "afterDelay",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.suggestSelection": "first",
@@ -29,13 +15,7 @@
   "editor.accessibilitySupport": "off",
   "typescript.referencesCodeLens.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "cSpell.enableFiletypes": [
-    "dotenv",
-    "feature",
-    "text",
-    "typescript",
-    "typescriptreact"
-  ],
+  "cSpell.enableFiletypes": ["dotenv", "text", "typescript", "typescriptreact"],
   "cucumber-quick": {
     "tool": "protractor",
     "script": "npx protractor launch"

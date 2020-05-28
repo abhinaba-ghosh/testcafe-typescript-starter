@@ -16,7 +16,7 @@ configure({
     console: { type: 'console' },
     file: {
       type: 'file',
-      filename: `${process.cwd()}/target/logs/test_${new Date()
+      filename: `${process.cwd()}/reports/logs/test_${new Date()
         .toISOString()
         .replace(/\W/g, '')}.log`,
     },

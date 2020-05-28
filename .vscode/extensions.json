@@ -1,8 +1,6 @@
 {
   "recommendations": [
-    "abhinabaghosh.cucumberquick",
     "dbaeumer.vscode-eslint",
-    "alexkrechik.cucumberautocomplete",
     "christian-kohler.path-intellisense",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",

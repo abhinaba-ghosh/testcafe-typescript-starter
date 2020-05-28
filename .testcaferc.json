@@ -1,0 +1,5 @@
+{
+  "browsers": ["chrome"],
+  "screenshotPath": "reports/screenshots",
+  "takeScreenshotsOnFails": true
+}

@@ -3,8 +3,8 @@
     "allowUnusedLabels": false,
     "baseUrl": "./",
     "paths": {
-      "e2e/*": ["./e2e/*"],
-      "core": ["./core/index.ts"],
+      "testcafe/*": ["./testcafe/*"],
+      "core": ["./core/*"],
       "config/*": ["./config/*"]
     },
     "lib": ["dom", "es6", "es7"],
@@ -16,16 +16,16 @@
     "noUnusedParameters": true,
     "noEmitHelpers": true,
     "importHelpers": true,
-    "outDir": "transform",
+    "outDir": "./dist",
     "removeComments": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "mapRoot": "transform",
+    "mapRoot": "./dist",
     "esModuleInterop": true,
     "target": "es5",
     "typeRoots": ["./node_modules/@types"],
-    "types": ["node", "cucumber"]
+    "types": ["node", "testcafe/ts-defs", "jquery"]
   },
-  "exclude": ["node_modules", "typescript"]
+  "exclude": ["node_modules"]
 }

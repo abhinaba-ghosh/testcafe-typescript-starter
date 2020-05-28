@@ -1,4 +1,4 @@
-import { loginPage } from '../pageObjects';
+import { loginPage } from '../pages';
 
 fixture(`Getting Started`).page(`https://the-internet.herokuapp.com`);
 

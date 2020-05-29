@@ -20,7 +20,7 @@ class LoginPage {
   }
 
   public async checkLoginPageOpened() {
-    await t.expect(this.loginPageHeader.innerText).contains('Login Page');
+    await t.expect(this.loginPageHeader.textContent).contains('Login Page');
   }
 
   public async setUserName(userName: string) {

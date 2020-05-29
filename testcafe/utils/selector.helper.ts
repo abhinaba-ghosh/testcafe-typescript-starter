@@ -20,6 +20,7 @@ const elementByXPath = Selector((xpath) => {
   return items;
 });
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function (xpath: string) {
   return Selector(elementByXPath(xpath));
 }

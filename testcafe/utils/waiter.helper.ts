@@ -1,6 +1,6 @@
-import { t, ClientFunction } from 'testcafe';
-import { Stopwatch } from 'ts-stopwatch';
 import angular from 'angular';
+import { ClientFunction, t } from 'testcafe';
+import { Stopwatch } from 'ts-stopwatch';
 
 /**
  * Wait for control to be visible
@@ -9,9 +9,9 @@ import angular from 'angular';
  */
 export const waitForControlVisible = async (
   selector: Selector,
-  timeout: number = 10
-) => {
-  let sw = new Stopwatch();
+  timeout = 10
+): Promise<void> => {
+  const sw = new Stopwatch();
   timeout = timeout * 1000;
   sw.start();
   while (!(await selector.visible) && sw.getTime() < timeout) {
@@ -24,12 +24,13 @@ export const waitForControlVisible = async (
  * Wait for ajax loading complete
  * @param timeout number in seconds
  */
-export const waitForAjaxReady = async (timeout = 10) => {
-  let sw = new Stopwatch();
+export const waitForAjaxReady = async (timeout = 10): Promise<void> => {
+  const sw = new Stopwatch();
   timeout = timeout * 1000;
   sw.start();
-  let startTime = sw.getTime();
+  const startTime = sw.getTime();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pageReady = ClientFunction(() => ($ as any).active == 0);
   let ready = await pageReady();
   while (!ready && sw.getTime() < timeout) {
@@ -51,11 +52,11 @@ export const waitForAjaxReady = async (timeout = 10) => {
  * Wait for page load complete
  * @param timeout number in seconds
  */
-export const waitForPageReady = async (timeout = 10) => {
-  let sw = new Stopwatch();
+export const waitForPageReady = async (timeout = 10): Promise<void> => {
+  const sw = new Stopwatch();
   timeout = timeout * 1000;
   sw.start();
-  let startTime = sw.getTime();
+  const startTime = sw.getTime();
 
   const pageReadyFn = ClientFunction(() => document.readyState === 'complete');
   while (!(await pageReadyFn()) && sw.getTime() < timeout) {
@@ -76,11 +77,11 @@ export const waitForPageReady = async (timeout = 10) => {
  * Wait for angular loading complete
  * @param timeout number in seconds
  */
-export const waitForAngularReady = async (timeout = 10) => {
-  let sw = new Stopwatch();
+export const waitForAngularReady = async (timeout = 10): Promise<void> => {
+  const sw = new Stopwatch();
   timeout = timeout * 1000;
   sw.start();
-  let startTime = sw.getTime();
+  const startTime = sw.getTime();
 
   const pageReadyFn = ClientFunction(
     () =>

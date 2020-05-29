@@ -4,7 +4,7 @@
  * protractor-logger provides functionalities as logger.info, logger.error, logger.warn
  * Logs will be saved with current date format in TEST_REPORT_DIRECTORY/logs folder
  */
-import { configure, getLogger } from 'log4js';
+import { configure, getLogger, Logger } from 'log4js';
 
 require('dotenv-safe').config({
   allowEmptyValues: true,
@@ -28,4 +28,4 @@ configure({
     },
   },
 });
-export const logger = getLogger('log');
+export const logger: Logger = getLogger('log');

@@ -1,7 +1,8 @@
 import { ConnectionPool, Request } from 'mssql';
+import { t } from 'testcafe';
+
 import { logger } from './logger.helper';
 import { decrypted } from './password.handler';
-import { t } from 'testcafe';
 
 let pool: ConnectionPool;
 let request: Request;
@@ -15,7 +16,7 @@ interface MSSQLConfig {
 }
 
 class DatabaseHelper {
-  async getDBConnection() {
+  async getDBConnection(): Promise<void> {
     const msSQLConfig: MSSQLConfig = {
       server: process.env.APP_DB_SERVER,
       user: process.env.APP_DB_USERNAME,
@@ -35,7 +36,7 @@ class DatabaseHelper {
     }
   }
 
-  async queryDB(userQuery: string) {
+  async queryDB(userQuery: string): Promise<unknown> {
     await this.getDBConnection();
     logger.info(`Query requested by User:\n ${userQuery}`);
     try {

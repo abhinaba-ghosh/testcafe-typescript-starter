@@ -31,7 +31,7 @@ const encrypted: CryptoJS.WordArray = CryptoJS.AES.encrypt(
  * This method decrypts encrypted password to UTF string
  * @param encrypedString
  */
-export const decrypted = (encrypedString: string) => {
+export const decrypted = (encrypedString: string): string => {
   return CryptoJS.AES.decrypt(encrypedString, key, {
     keySize: 128 / 8,
     iv: _iv,

@@ -1,4 +1,4 @@
-import { Selector, t, ClientFunction } from 'testcafe';
+import { ClientFunction, Selector, t } from 'testcafe';
 
 class HomePage {
   private homeSuccessMsg: Selector;

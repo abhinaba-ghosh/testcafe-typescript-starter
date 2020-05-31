@@ -32,7 +32,7 @@ pipeline {
 
   stage('Run TestCafe') {
    steps {
-    sh 'testcafe "firefox,chromium --no-sandbox" testcafe/**/*.js'
+    sh 'npx testcafe chromium testcafe/**/*.js'
    }
   }
 

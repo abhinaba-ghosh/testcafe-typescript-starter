@@ -45,7 +45,6 @@ pipeline {
   }
 
     stage('Publish Reports') {
-        echo 'Publish Allure report'
        steps {
     script {
             allure([

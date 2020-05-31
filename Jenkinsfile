@@ -3,6 +3,8 @@ pipeline {
                 docker {
                         image 'testcafe/testcafe'
                         args  '--net=host -e DISPLAY=":0"'
+                         args '--entrypoint=\'\''
+                        reuseNode true
                 } 
   }
  environment {
@@ -24,7 +26,7 @@ pipeline {
   stage('Run TestCafe') {
    steps {
      sh 'npm i --verbose'
-    sh "node_modules/.bin/testcafe 'chromium:headless --no-sandbox --disable-dev-shm-usage' ./testcafe/**/*.spec.ts" 
+    sh "testcafe 'chrome:headless --no-sandbox --disable-dev-shm-usage' ./testcafe/**/*.spec.ts" 
    }
   }
 

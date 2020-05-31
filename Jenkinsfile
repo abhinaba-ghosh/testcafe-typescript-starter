@@ -17,7 +17,7 @@ pipeline {
 
      stage('Configuration') {
       steps {
-      sh 'npm install'
+      sh 'npm install --loglevel verbose'
       sh 'npm run clean'
       sh 'npm run lint'
       }

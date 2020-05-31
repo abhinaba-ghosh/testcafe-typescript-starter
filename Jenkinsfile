@@ -32,22 +32,32 @@ pipeline {
    stage('Configuration') {
    steps {
      sh 'npm i --verbose'
-    sh 'npm run clean' 
-    sh 'npm run lint' 
+     sh 'npm run clean' 
+     sh 'npm run lint' 
    }
   }
 
   stage('Run TestCafe') {
    steps {
     sh "npm run e2e:headless" 
-   }
-  }
-
-  stage('Publish Report') {
-   steps {
     sh "npm run report" 
    }
   }
+
+    stage('Publish Reports') {
+        echo 'Publish Allure report'
+       steps {
+    script {
+            allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'reports/allure/allure-report']]
+            ])
+    }
+    }
+    }
  }
 }
 

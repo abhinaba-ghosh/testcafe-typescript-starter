@@ -18,7 +18,7 @@
     "docker:test:chrome": "docker run -u root -v ${PWD}:/tests -it testcafe/testcafe chromium /tests/**/*.spec.ts",
     "docker:build:testcafe": "docker build -t testcafe -f docker/Dockerfile .",
     "docker:stop:testcafe": "docker stop $(docker ps -qa --filter ancestor=testcafe)",
-    "docker:deleteAll": "docker rm -vf $(docker ps -a -q) && docker rmi -f $(docker images -a -q)"
+    "docker:deleteAll": "docker rmi -f $(docker images -a -q)"
   },
   "repository": {
     "type": "git",

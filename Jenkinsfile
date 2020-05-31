@@ -27,7 +27,7 @@ pipeline {
   stage('Clean Previous Reports') {
    steps {
     sh 'npm run clean'
-    sh 'npx testcafe chromium testcafe/**/*.js' 
+    sh 'npm run e2e:firefox' 
    }
   }
 

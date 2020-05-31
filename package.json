@@ -15,7 +15,7 @@
     "report": "allure generate reports/allure/allure-results --clean -o reports/allure/allure-report",
     "report:publish": "allure open reports/allure/allure-report",
     "docker:test:chrome": "docker run -u root -v ${PWD}:/tests -it testcafe/testcafe chromium /tests/**/*.spec.ts",
-    "docker:build:testcafe": "docker build -t testcafe -f docker/testcafe/Dockerfile .",
+    "docker:build:testcafe": "docker build -t testcafe -f docker/Dockerfile .",
     "docker:stop:testcafe": "docker stop $(docker ps -qa --filter ancestor=testcafe)",
     "docker:deleteAll": "docker rm -vf $(docker ps -a -q) && docker rmi -f $(docker images -a -q)"
   },

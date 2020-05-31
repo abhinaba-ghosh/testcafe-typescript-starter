@@ -1,13 +1,13 @@
-node {
- TESTCAFE_DOCKER_PATH = 'docker/Dockerfile'
-}
-
 pipeline {
- agent {
-    docker {
-      image 'honomoa/docker-jenkins-testcafe'
-    }
- }
+  agent { 
+                docker {
+                        image 'testcafe/testcafe'
+                        args  '--net=host -e DISPLAY=":0"'
+                        args '-e NODE_PATH=./node_modules'
+                        args '--entrypoint=\'\''
+                        reuseNode true
+                } 
+  }
  environment {
   HOME = '.'
  }
@@ -24,16 +24,9 @@ pipeline {
    }
   }
 
-  stage('Clean Previous Reports') {
-   steps {
-    sh 'npm run clean'
-    sh 'npm run e2e:firefox' 
-   }
-  }
-
   stage('Run TestCafe') {
    steps {
-    sh 'echo'
+    sh "node_modules/.bin/testcafe 'chromium:headless --no-sandbox --disable-dev-shm-usage' ./testcafe/**/*spec.ts" 
    }
   }
 
@@ -45,3 +38,5 @@ pipeline {
   }
  }
 }
+
+

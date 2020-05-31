@@ -4,6 +4,7 @@ reports
 dist
 *.log
 package-lock.json
+jenkins_home
 
 # Build artifacts
 .nyc_output

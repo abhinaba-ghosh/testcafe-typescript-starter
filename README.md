@@ -72,6 +72,11 @@ The page object model resides under `testcafe` folder.
 - `specs` folder contains testcafe fixures
 - `utils` folder contains different testcafe helpers
 
+##
+
+Docker housekeeping, add --rm (docker run --rm -v ...) to remove docker container after tests end. takes up less disk space.
+Runs docker image prune and docker containers prune regularly to delete old images & container to reclaim back precious disk space
+
 #### Allure report
 
 Reports will be generated for each test cases and allure will integrate those results and combine.

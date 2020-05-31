@@ -6,16 +6,13 @@ def build() {
 
 def test(BROWSER) {
     build()
-    sh "npm run testDocker${BROWSER}"
-    stash name: "${BROWSER}-report-stash", includes: "**/reports/${BROWSER}.json"
+    sh "npm run docker:test:${BROWSER}"
+    stash name: "${BROWSER}-report-stash", includes: "**/reports/**/*.xml"
 }
 
 def publishReports() {
     echo "Publishing reports:"
-    sh 'rm -rf reports'
-    unstash "Firefox-report-stash"
-    unstash "Chrome-report-stash"
-    sh 'npm run generateHtmlReport'
+    sh 'npm run report'
     Date date = new Date()
     String datePart = date.format("dd/MM/yyyy")
     String timePart = date.format("HH:mm:ss")
@@ -30,15 +27,15 @@ def publishReports() {
             reportTitles         : ""])
 }
 
-def checkTests() {
-    def result = sh script: "node src/checkTests.js", returnStatus: true
-    if (result != 0) {
-        echo "Check log for failed e2e tests!"
-        currentBuild.result = "FAILURE"
-        return
-    }
-    sh 'rm -rf reports'
-}
+// def checkTests() {
+//     def result = sh script: "node src/checkTests.js", returnStatus: true
+//     if (result != 0) {
+//         echo "Check log for failed e2e tests!"
+//         currentBuild.result = "FAILURE"
+//         return
+//     }
+//     sh 'rm -rf reports'
+// }
 
 def checkForFailure() {
     def JOBURL = env.JOB_URL

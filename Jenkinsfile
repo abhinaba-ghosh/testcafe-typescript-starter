@@ -1,46 +1,33 @@
-node {
- TESTCAFE_DOCKER_PATH = 'docker/Dockerfile'
-}
-
 pipeline {
- agent {
-  dockerfile {
-   filename "${TESTCAFE_DOCKER_PATH}"
+  options {
+    disableConcurrentBuilds()
+    buildDiscarder(logRotator(numToKeepStr: '10'))
   }
- }
- environment {
-  HOME = '.'
- }
- stages {
-  stage('Clone scm') {
-   steps {
-    checkout([$class: 'GitSCM', branches: [
-      [name: '*/master']
-     ],
-     userRemoteConfigs: [
-      [url: 'https://github.com/abhinaba-ghosh/testcafe-typescript-starter.git']
-     ]
-    ])
-   }
+  agent {
+    dockerfile {
+      label 'buildfarm'
+      args '-v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+    }
   }
 
-  stage('Clean Previous Reports') {
-   steps {
-    sh 'npm run clean'
-   }
-  }
+  stages {
+    stage('Build/Test') {
+      steps {
+        script {
+          checkout scm
 
-  stage('Run TestCafe') {
-   steps {
-    sh 'testcafe "firefox,chromium --no-sandbox" testcafe/**/*.js'
-   }
-  }
+          def customImage = docker.build("${BUILD_TAG}")
 
-  stage('Teardown') {
-   steps {
-    sh 'docker rm -vf $(docker ps -a -q)'
-    sh 'docker rmi -f $(docker images -a -q)'
-   }
+          customImage.inside("-u 1000:1000") {
+            stage("Test") {
+
+              sh "npm install"
+              sh "npm install testcafe"
+              sh "npm run test"
+            }
+          }
+        }
+      }
+    }
   }
- }
 }

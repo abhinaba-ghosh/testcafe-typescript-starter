@@ -24,10 +24,9 @@ pipeline {
    }
   }
 
-  stage('Configuration') {
+  stage('Clean Previous Reports') {
    steps {
     sh 'npm run clean'
-    sh 'npm run lint'
    }
   }
 

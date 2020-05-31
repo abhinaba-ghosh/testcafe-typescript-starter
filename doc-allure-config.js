@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/prevent-abbreviations
 const DOC_ALLURE_CONFIG = {
   CLEAN_REPORT_DIR: true,
   RESULT_DIR: '/reports/allure/allure-results',
@@ -17,4 +18,5 @@ const DOC_ALLURE_CONFIG = {
   },
 };
 
+// eslint-disable-next-line no-undef
 module.exports = DOC_ALLURE_CONFIG;

@@ -14,9 +14,9 @@ pipeline {
 
      stage('Configuration') {
       steps {
-      sh 'npm install'
-      sh 'npm run clean'
-      sh 'npm run lint'
+      sh 'sudo npm install'
+      sh 'sudo npm run clean'
+      sh 'sudo npm run lint'
       }
     }
 

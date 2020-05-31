@@ -4,12 +4,9 @@ FROM testcafe/testcafe
 # We need root privileages to install new deps:
 USER root
 
-# Without this line `testcafe` and `testcafe-*-selectors` are not found:
-# ENV NODE_PATH=/opt:/opt/testcafe/node_modules
 
-# # Installing custom dependencies:
-# RUN cd /opt/testcafe && npm install \
-#   testcafe-nuxt-selectors testcafe-vue-selectors
+RUN cd /opt/testcafe \
+    && npm install -g testcafe-reporter-allure \
+    && npm install -g allure-commandline
 
-# # Falling back to the runtime privileages:
-# USER user
+EXPOSE 1337 1338

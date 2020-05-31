@@ -1,5 +1,5 @@
 node {
- TESTCAFE_DOCKER_PATH = 'docker/testcafe/Dockerfile'
+ TESTCAFE_DOCKER_PATH = 'docker/Dockerfile'
 }
 
 pipeline {

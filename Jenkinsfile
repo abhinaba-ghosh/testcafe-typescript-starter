@@ -32,12 +32,7 @@ pipeline {
 
   stage('Run TestCafe') {
    steps {
-    sh 'npx testcafe chromium ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml'
-   }
-   post {
-    always {
-     junit 'reports/xml/report.xml'
-    }
+    sh 'testcafe "firefox,chromium --no-sandbox" testcafe/**/*.js'
    }
   }
 

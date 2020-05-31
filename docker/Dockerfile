@@ -5,8 +5,4 @@ FROM testcafe/testcafe
 USER root
 
 
-RUN cd /opt/testcafe \
-    && npm install -g testcafe-reporter-allure \
-    && npm install -g allure-commandline
-
-EXPOSE 1337 1338
+WORKDIR  /var/jenkins_home

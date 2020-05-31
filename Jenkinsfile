@@ -33,7 +33,7 @@ pipeline {
    steps {
      sh 'npm i --verbose'
      sh 'npm run clean' 
-     sh 'npm run lint' 
+    sh 'npm run lint' 
    }
   }
 
@@ -45,17 +45,17 @@ pipeline {
   }
 
     stage('Publish Reports') {
-       steps {
-    script {
-            allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'reports/allure/allure-report']]
-            ])
-    }
-    }
+        echo 'Publish Allure report'
+        publishHTML(
+                target: [
+                        allowMissing         : false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll              : true,
+                        reportDir            : './reports/allure/allure-report',
+                        reportFiles          : 'index.html',
+                        reportName           : "Allure Report"
+                ]
+        )
     }
  }
 }

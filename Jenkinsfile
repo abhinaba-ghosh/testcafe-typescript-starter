@@ -44,14 +44,8 @@ pipeline {
 
   stage('Teardown') {
    steps {
-    sh """
-    docker ps - a\ |
-     awk '{ print \$1,\$2 }'\ |
-     grep imagename\ |
-     awk '{print \$1 }'\ |
-     xargs - I {}
-    docker rm - f {}
-    """
+    sh 'docker rm -vf $(docker ps -a -q)'
+    sh 'docker rmi -f $(docker images -a -q)'
    }
   }
  }

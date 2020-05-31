@@ -26,7 +26,7 @@ pipeline {
   stage('Run TestCafe') {
    steps {
      sh 'npm i --verbose'
-    sh "testcafe 'chrome:headless --no-sandbox --disable-dev-shm-usage' ./testcafe/**/*.spec.ts" 
+    sh "testcafe chromium:headless ./testcafe/**/*.spec.ts" 
    }
   }
 

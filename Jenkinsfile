@@ -27,12 +27,13 @@ pipeline {
   stage('Clean Previous Reports') {
    steps {
     sh 'npm run clean'
+    sh 'npx testcafe chromium testcafe/**/*.js' 
    }
   }
 
   stage('Run TestCafe') {
    steps {
-    sh 'npx testcafe chromium testcafe/**/*.js'
+    sh 'echo'
    }
   }
 

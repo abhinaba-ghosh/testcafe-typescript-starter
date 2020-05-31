@@ -4,6 +4,9 @@ pipeline {
       image 'testcafe/testcafe'
     }
   }
+   environment {
+        HOME = '.'
+    }
   stages {
     stage('Clone scm') {
       steps {
@@ -14,9 +17,9 @@ pipeline {
 
      stage('Configuration') {
       steps {
-      sh 'sudo npm install'
-      sh 'sudo npm run clean'
-      sh 'sudo npm run lint'
+      sh 'npm install'
+      sh 'npm run clean'
+      sh 'npm run lint'
       }
     }
 

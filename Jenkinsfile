@@ -23,17 +23,23 @@ pipeline {
    }
   }
 
-  stage('Run TestCafe') {
+   stage('Configuration') {
    steps {
      sh 'npm i --verbose'
-    sh "testcafe chromium:headless ./testcafe/**/*.spec.ts" 
+    sh 'npm run clean' 
+    sh 'npm run lint' 
    }
   }
 
-  stage('Teardown') {
+  stage('Run TestCafe') {
    steps {
-    sh 'docker rm -vf $(docker ps -a -q)'
-    sh 'docker rmi -f $(docker images -a -q)'
+    sh "npm run e2e:headless" 
+   }
+  }
+
+  stage('Publish Report') {
+   steps {
+    sh "npm run report" 
    }
   }
  }

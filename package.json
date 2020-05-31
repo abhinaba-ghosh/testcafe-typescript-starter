@@ -12,6 +12,7 @@
     "commit": "git-cz",
     "e2e:chrome": "npx testcafe chrome ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml",
     "e2e:firefox": "npx testcafe firefox ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml",
+    "e2e:headless": "testcafe chromium:headless ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml",
     "report": "allure generate reports/allure/allure-results --clean -o reports/allure/allure-report",
     "report:publish": "allure open reports/allure/allure-report",
     "docker:test:chrome": "docker run -u root -v ${PWD}:/tests -it testcafe/testcafe chromium /tests/**/*.spec.ts",

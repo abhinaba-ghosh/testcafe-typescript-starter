@@ -17,7 +17,7 @@ pipeline {
 
      stage('Configuration') {
       steps {
-      sh 'npm install --loglevel verbose'
+      sh 'npm install -g allure-commandline testcafe-reporter-allure --loglevel verbose'
       sh 'npm run clean'
       sh 'npm run lint'
       }

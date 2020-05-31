@@ -4,9 +4,9 @@ node {
 
 pipeline {
  agent {
-  dockerfile {
-   filename "${TESTCAFE_DOCKER_PATH}"
-  }
+    docker {
+      image 'honomoa/docker-jenkins-testcafe'
+    }
  }
  environment {
   HOME = '.'

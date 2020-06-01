@@ -1,8 +1,9 @@
 import { loginPage } from '../pages';
+import { getBaseURL } from '../utils/config.helper';
 
-fixture(`Getting Started`).page(`https://the-internet.herokuapp.com`);
+fixture(`Login Page Test`).page(getBaseURL());
 
-test('TC1: user navigates to login page', async () => {
+test('TC2: user navigates to login page', async () => {
   await loginPage.launchLoginUrl();
   await loginPage.checkLoginPageOpened();
 });

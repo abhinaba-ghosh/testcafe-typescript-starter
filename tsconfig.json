@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
     "allowUnusedLabels": false,
-    "baseUrl": "./",
-    "paths": {
-      "testcafe/*": ["./testcafe/*"],
-      "core": ["./core/*"]
-    },
     "lib": ["dom", "es6", "es7"],
     "declaration": false,
     "module": "commonjs",
@@ -16,7 +11,10 @@
     "inlineSourceMap": true,
     "noImplicitAny": false,
     "pretty": true,
+    "outDir": "./build",
     "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types"],
     "types": ["node", "testcafe/ts-defs", "jquery"]
   },

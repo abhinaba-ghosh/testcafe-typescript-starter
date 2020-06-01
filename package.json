@@ -10,9 +10,9 @@
     "lint": "eslint . --ext ts",
     "lint:fix": "eslint . --ext ts --fix",
     "commit": "git-cz",
-    "e2e:chrome": "npx testcafe chrome ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml",
-    "e2e:firefox": "npx testcafe firefox ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml",
-    "e2e:headless": "testcafe chromium:headless ./testcafe/**/*.spec.ts --reporter allure,xunit:reports/xml/report.xml",
+    "e2e:chrome": "testcafe chrome ./testcafe/**/*.spec.ts",
+    "e2e:firefox": "testcafe firefox ./testcafe/**/*.spec.ts",
+    "e2e:headless": "testcafe chromium:headless ./testcafe/**/*.spec.ts",
     "report": "allure generate reports/allure/allure-results --clean -o reports/allure/allure-report",
     "report:publish": "allure open reports/allure/allure-report",
     "docker:test:chrome": "docker run -u root -v ${PWD}:/tests -it testcafe/testcafe chromium /tests/**/*.spec.ts",
@@ -48,12 +48,13 @@
     "log4js": "5.2.2",
     "prettier": "2.0.5",
     "pretty-quick": "1.11.1",
+    "shelljs": "0.8.1",
     "testcafe-reporter-allure": "^1.0.5",
+    "testcafe-reporter-spec": "^2.1.1",
     "ts-node": "^8.9.1",
     "ts-stopwatch": "0.0.4",
     "tsconfig-paths": "^3.8.0",
-    "typescript": "3.2.1",
-    "shelljs": "0.8.1"
+    "typescript": "3.2.1"
   },
   "husky": {
     "hooks": {
